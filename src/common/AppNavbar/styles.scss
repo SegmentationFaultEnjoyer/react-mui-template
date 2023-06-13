@@ -1,0 +1,12 @@
+.app-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: toRem(15) toRem(20);
+  background: var(--app-bg);
+  border: toRem(1) solid var(--border-primary-main);
+}
+
+.app-navbar__logo {
+  max-width: toRem(50);
+}

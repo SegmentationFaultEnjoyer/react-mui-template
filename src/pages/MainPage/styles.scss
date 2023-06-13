@@ -1,0 +1,8 @@
+.main-page {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: toRem(40);
+    gap: toRem(20);
+    align-items: center;
+}

@@ -1,0 +1,20 @@
+.error-message {
+  display: grid;
+  place-items: center;
+  grid-gap: toRem(12);
+}
+
+.error-message__icon {
+  color: var(--error-main);
+  font-size: toRem(48);
+}
+
+.error-message__title {
+  color: var(--error-main);
+  font-size: toRem(24);
+}
+
+.error-message__message {
+  color: var(--error-main);
+  font-size: toRem(18);
+}
