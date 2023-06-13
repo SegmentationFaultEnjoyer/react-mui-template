@@ -13,5 +13,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Setup for [MUI](https://mui.com/material-ui/getting-started/overview/) library for React components
 
 
-[Unreleased]: https://github.com/SegmentationFaultEnjoyer/react-mui-template
-[1.0.0-rc.0]: https://github.com/SegmentationFaultEnjoyer/react-mui-template/
+[Unreleased]: https://github.com/SegmentationFaultEnjoyer/react-mui-template/compare/1.0.0-rc.0...main
+[1.0.0-rc.0]: https://github.com/SegmentationFaultEnjoyer/react-mui-template/tags/1.0.0-rc.0
