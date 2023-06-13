@@ -19,7 +19,8 @@
     "preview": "vite preview",
     "rsc": "node scripts/release-sanity-check.mjs",
     "generate-ether-types": "typechain --target=ethers-v5 'src/abi/**/*.json' --out-dir src/types/contracts",
-    "generate-icons-enum": "node scripts/generate-icon-enum.js"
+    "generate-icons-enum": "node scripts/generate-icon-enum.js",
+    "generate-palette": "node scripts/generate-theme.js && node scripts/generate-palette.js"
   },
   "dependencies": {
     "@distributedlab/jac": "^0.2.0-rc.16",
