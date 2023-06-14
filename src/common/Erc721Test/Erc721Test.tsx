@@ -121,7 +121,7 @@ const Erc721Test: FC = () => {
           <TextField
             variant='outlined'
             label='Token address'
-            color='primary_light'
+            color='primary-light'
             disabled={isFormDisabled}
             value={address}
             error={Boolean(getFieldErrorMessage('address'))}
@@ -135,7 +135,7 @@ const Erc721Test: FC = () => {
             variant='outlined'
             type='number'
             label='Token id'
-            color='primary_light'
+            color='primary-light'
             disabled={isFormDisabled}
             value={tokenId}
             error={Boolean(getFieldErrorMessage('tokenId'))}
@@ -148,7 +148,7 @@ const Erc721Test: FC = () => {
           <TextField
             variant='outlined'
             label='Transfer to'
-            color='primary_light'
+            color='primary-light'
             disabled={isFormDisabled}
             value={transferTo}
             error={Boolean(getFieldErrorMessage('transferTo'))}
@@ -161,7 +161,7 @@ const Erc721Test: FC = () => {
           <Button
             disabled={isFormDisabled}
             variant='contained'
-            color='primary_main'
+            color='primary-main'
             endIcon={<DeleteForever />}
             onClick={() => triggerTokenInfoFetching()}
           >
@@ -170,7 +170,7 @@ const Erc721Test: FC = () => {
           <Button
             disabled={isFormDisabled}
             variant='contained'
-            color='primary_main'
+            color='primary-main'
             endIcon={<Icon name={ICON_NAMES.arrowDown} />}
             onClick={() => triggerTokenTransfer()}
           >

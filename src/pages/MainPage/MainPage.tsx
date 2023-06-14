@@ -33,7 +33,7 @@ const MainPage: FC<Props> = ({ ...rest }) => {
           <Button
             disabled={provider.isPerformingOperation}
             variant='contained'
-            color='primary_main'
+            color='primary-main'
             onClick={() => switchChain(Q_CHAINS.testnet)}
           >
             {t('main-page.q-chain')}
@@ -41,7 +41,7 @@ const MainPage: FC<Props> = ({ ...rest }) => {
           <Button
             disabled={provider.isPerformingOperation}
             variant='contained'
-            color='primary_main'
+            color='primary-main'
             onClick={() => switchChain(POLYGON_CHAINS.mumbai)}
           >
             {t('main-page.mumbai-chain')}
@@ -49,7 +49,7 @@ const MainPage: FC<Props> = ({ ...rest }) => {
           <Button
             disabled={provider.isPerformingOperation}
             variant='contained'
-            color='primary_main'
+            color='primary-main'
             onClick={() => switchChain(ETHEREUM_CHAINS.sepolia)}
           >
             {t('main-page.sepolia-chain')}

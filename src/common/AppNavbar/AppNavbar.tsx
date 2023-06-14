@@ -30,7 +30,7 @@ const AppNavbar: FC<HTMLAttributes<HTMLDivElement>> = ({
       <Button
         disabled={provider.isPerformingOperation}
         variant='contained'
-        color='primary_main'
+        color='primary-main'
         onClick={() => provider.connect()}
       >
         {connectBtnText}
@@ -38,7 +38,7 @@ const AppNavbar: FC<HTMLAttributes<HTMLDivElement>> = ({
       <Button
         disabled={provider.isPerformingOperation}
         variant='outlined'
-        color='primary_main'
+        color='primary-main'
         onClick={() => provider.disconnect()}
       >
         {'Disconnect'}

@@ -104,11 +104,7 @@ function main() {
 
     const colors = getColors(inputPath)
 
-
-
     const themeDeclaration = getThemeDeclaration(colors)
-
-
 
     saveFile(themeDeclaration, outputPath)
 
