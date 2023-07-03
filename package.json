@@ -31,6 +31,7 @@
     "@mui/material": "^5.13.2",
     "@reduxjs/toolkit": "^1.8.3",
     "@solana/web3.js": "^1.48.0",
+    "@splidejs/react-splide": "^0.7.12",
     "@web3-onboard/coinbase": "^2.2.4",
     "@web3-onboard/fortmatic": "^2.0.19",
     "@web3-onboard/injected-wallets": "^2.9.0",

@@ -6,3 +6,16 @@
     gap: toRem(20);
     align-items: center;
 }
+
+.main-page__carousel {
+    max-width: toRem(800);
+    margin-bottom: toRem(100);
+}
+
+.main-page__cards {
+    padding: toRem(15);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: toRem(20);
+}

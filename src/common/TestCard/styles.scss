@@ -1,0 +1,28 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+    border-radius: toRem(15);
+    width: toRem(270);
+    background-color: var(--info-main);
+    overflow: hidden;
+}
+
+.product-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(18);
+    padding: toRem(10) toRem(20);
+}
+
+.product-card__info-part {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(2);
+}
+
+.product-card__title {
+    font-weight: 600;
+    line-height: toRem(21);
+    font-size: toRem(20);
+}

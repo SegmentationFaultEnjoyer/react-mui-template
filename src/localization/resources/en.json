@@ -44,6 +44,15 @@
   "main-page": {
     "q-chain": "Q Testnet",
     "mumbai-chain": "Mumbai",
-    "sepolia-chain": "Sepolia"
+    "sepolia-chain": "Sepolia",
+    "carousel-default": "Default carousel",
+    "carousel-thumbnails": "Thumbnails navigation",
+    "carousel-in-card": "Carousel in cards"
+  },
+  "product-card": {
+    "carousel-label": "Product photos",
+    "counter-lbl": "Counter",
+    "counter-value": "{{current}} of {{total}} left",
+    "price-lbl": "Price"
   }
 }

@@ -1,0 +1,88 @@
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: toRem(20);
+}
+
+.carousel__splide {
+    max-width: 100%;
+}
+
+.carousel__slide {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel__slide-image {
+    max-width: 100%;
+    object-fit: cover;
+
+    &--image-cover {
+        width: 100%;
+        height: 100%;
+        object-position: top center;
+    }
+}
+
+.carousel__pagination {
+    display: none;
+}
+
+.carousel__arrow {
+    // background-color: rgba(var(--app-bg-rgb), 0.5);
+
+    svg {
+        fill: var(--primary-main);
+    }
+    
+}
+
+.thumbnail-navigation {
+    padding: 0 toRem(50);
+    max-width: 90%;
+
+    @include respond-to(small) {
+        max-width: 60%;
+    }
+}
+
+.thumbnail-navigation__slide {
+    opacity: 0.6;
+
+    &.is-active {
+        opacity: 1;
+    }
+}
+
+.thumbnail-navigation__slide-image {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.splide__track {
+    --offset: #{toRem(25)};
+    --z-index-local: 1;
+
+    position: relative;
+
+    &.carousel__splide-track {
+        &:after {
+            content: attr(data-image-counter) ' / ' attr(data-image-amount);
+            position: absolute;
+            z-index: var(--z-index-local);
+            top: var(--offset);
+            right: var(--offset);
+            border-radius: toRem(6);
+            padding: toRem(6) toRem(8);
+            background-color: rgba(var(--app-bg-rgb), 0.7);
+            color: var(--primary-main);
+            font-weight: 600;
+            font-size: toRem(14);
+        }
+    }
+    
+    
+}
+
+
