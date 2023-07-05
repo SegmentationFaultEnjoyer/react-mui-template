@@ -1,0 +1,49 @@
+.selected-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: toRem(10);
+    border: toRem(1) solid var(--secondary-light);
+    border-radius: toRem(8);
+    padding: toRem(8) toRem(12);
+    padding-left: toRem(16);
+}
+
+.selected-file__clear-icon {
+    --size: #{toRem(30)};
+
+    min-width: var(--size);
+    min-height: var(--size);
+}
+
+.selected-file__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-file__info-name {
+    font-weight: 500;
+    line-height: toRem(22);
+}
+
+.selected-file__info-size {
+    font-size: toRem(12);
+    line-height: toRem(22);
+    color: var(--secondary-light);
+}
+
+.selected-file__wrapper {
+    display: flex;
+    gap: toRem(10);
+    align-items: center;
+}
+
+.selected-file__preview {
+    --size: #{toRem(46)};
+
+    aspect-ratio: 1 / 1;
+    max-width: var(--size);
+    max-height: var(--size);
+    object-fit: cover;
+    border-radius: toRem(4);
+}

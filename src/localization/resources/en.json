@@ -45,5 +45,9 @@
     "q-chain": "Q Testnet",
     "mumbai-chain": "Mumbai",
     "sepolia-chain": "Sepolia"
+  },
+  "file-field": {
+    "title": "Drag & drop files or Browse",
+    "another-file-lbl": "Add another file"
   }
 }

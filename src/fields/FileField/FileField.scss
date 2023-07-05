@@ -1,0 +1,66 @@
+.file-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@mixin hover-state {
+    border: toRem(2) dashed var(--primary-light);
+    background-color: rgba(var(--secondary-light-rgb), 0.3);
+}
+
+.file-field__wrapper {
+    border-radius: toRem(8);
+    border: toRem(2) dashed var(--secondary-light);
+    padding: toRem(20);
+    transition: 0.2s ease-in-out;
+    transition-property: border background-color;
+    position: relative;
+    width: 100%;
+
+    &--active {
+        @include hover-state;
+    }
+
+    &--hidden {
+        display: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        @include hover-state;
+    }
+}
+
+.file-field__title {
+    color: var(--primary-main);
+    font-size: toRem(18);
+    line-height: toRem(24);
+}
+
+.file-field__label {
+    @include field-label;
+}
+
+.file-field__sublabel {
+    color: var(--primary-light);
+    font-size: toRem(14);
+    font-weight: 300;
+}
+
+.file-field__upload-icon {
+    --size: #{toRem(40)};
+
+    min-width: var(--size);
+    min-height: var(--size);
+}
+
+.file-field__uploaded-files {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(12);
+}
+
+.file-field__add-btn {
+    align-self: flex-end;
+}

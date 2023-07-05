@@ -6,3 +6,10 @@
     gap: toRem(20);
     align-items: center;
 }
+
+.main-page__fields {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: toRem(15);
+}
