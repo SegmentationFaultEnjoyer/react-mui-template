@@ -1,0 +1,19 @@
+.main-table {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(8);
+}
+
+.main-table__row {
+    display: flex;
+    gap: toRem(8);
+
+    & > * {
+        width: toRem(50);
+        height: toRem(44);
+    }
+}
+
+.main-table__input {
+    @include table-cell-input;
+}

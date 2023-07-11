@@ -5,7 +5,7 @@ import { motion, MotionProps } from 'framer-motion'
 import { FC, HTMLAttributes } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Erc721Test } from '@/common'
+import { AttrsTableTest, Erc721Test } from '@/common'
 import { ETHEREUM_CHAINS, POLYGON_CHAINS, Q_CHAINS } from '@/enums'
 import { useAppSelector } from '@/store'
 
@@ -14,9 +14,9 @@ type Props = HTMLAttributes<HTMLDivElement> & MotionProps
 type Chain = Q_CHAINS | POLYGON_CHAINS | ETHEREUM_CHAINS
 
 const MainPage: FC<Props> = ({ ...rest }) => {
-  const { t } = useTranslation()
-
   const provider = useAppSelector(state => state.web3ProvidersSlice.provider)
+
+  const { t } = useTranslation()
 
   const switchChain = (chainId: Chain) => {
     if (!provider?.currentProvider) return
@@ -60,6 +60,8 @@ const MainPage: FC<Props> = ({ ...rest }) => {
         <p>{`provider: ${provider.selectedProvider}`}</p>
       )}
       <Erc721Test />
+
+      <AttrsTableTest />
     </motion.div>
   )
 }

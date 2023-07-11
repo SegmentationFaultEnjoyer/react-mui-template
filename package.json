@@ -23,8 +23,8 @@
     "generate-palette": "node scripts/generate-theme.js && node scripts/generate-palette.js"
   },
   "dependencies": {
-    "@distributedlab/jac": "^0.2.0-rc.16",
-    "@distributedlab/tools": "^0.2.0-rc.16",
+    "@distributedlab/jac": "^0.2.0",
+    "@distributedlab/tools": "^0.2.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.11.16",

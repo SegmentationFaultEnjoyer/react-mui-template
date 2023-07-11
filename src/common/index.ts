@@ -1,5 +1,7 @@
 export { default as AppLogo } from './AppLogo'
 export { default as AppNavbar } from './AppNavbar'
+export { default as AttributesTable } from './AttributesTable'
+export { default as AttrsTableTest } from './AttrsTableTest'
 export { default as Collapse } from './Collapse'
 export { default as Erc721Test } from './Erc721Test'
 export { default as ErrorMessage } from './ErrorMessage'

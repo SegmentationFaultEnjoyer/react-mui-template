@@ -261,25 +261,25 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.2.0.tgz#2cbcf822bf3764c9658c4d2e568bd0c0cb748016"
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
-"@distributedlab/fetcher@0.2.0-rc.19":
-  version "0.2.0-rc.19"
-  resolved "https://registry.yarnpkg.com/@distributedlab/fetcher/-/fetcher-0.2.0-rc.19.tgz#b96d98679fe29dae628a30362436ef834ccdcaa4"
-  integrity sha512-zfj9ui2kkvd6uKOt/Q6VXfutcTxBJdjKslOkfdAdqiQhn9FKTtMfc2u/8PNgrJIfvYStf3A5NOZQ3Noy57IYSg==
+"@distributedlab/fetcher@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@distributedlab/fetcher/-/fetcher-0.2.0.tgz#d6667cb447d8b295f35e7c7f4bae89d3dc111c6a"
+  integrity sha512-Arf+bhrHHWxIiWR3p0ibNZiVSl5KgLKHT9KJtJb9BAfkkfmWmNMZ8hchU2yaZALaRzN3Hk7WwCQbXYJ4qmCIzQ==
   dependencies:
     uuid "^9.0.0"
 
-"@distributedlab/jac@^0.2.0-rc.16":
-  version "0.2.0-rc.19"
-  resolved "https://registry.yarnpkg.com/@distributedlab/jac/-/jac-0.2.0-rc.19.tgz#fd3ca726e5b12900de7031754dda8fdf4acf2b5c"
-  integrity sha512-yrrCenczosYLX9rMmf+DJnkpPGfBg/98YnDAvKh9bLwJOgkm08YZfK3dasMGtfd1DLnxjCbd/CUnGduZIf8UnQ==
+"@distributedlab/jac@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@distributedlab/jac/-/jac-0.2.0.tgz#c7bf9504962c1d578ba16ce5fc146a3364568c0f"
+  integrity sha512-JevBPluX2e7bib/9RGl5A2HaoGgqsbQgIW6I13hqIJkg/L/DXK/xuu+3VyX0LhZC57sVeie5zBj+JflhWRHp8w==
   dependencies:
-    "@distributedlab/fetcher" "0.2.0-rc.19"
+    "@distributedlab/fetcher" "0.2.0"
     lodash "^4.17.21"
 
-"@distributedlab/tools@^0.2.0-rc.16":
-  version "0.2.0-rc.19"
-  resolved "https://registry.yarnpkg.com/@distributedlab/tools/-/tools-0.2.0-rc.19.tgz#ccbf2f5c63b3be19945bf340a76dc881ba0c263d"
-  integrity sha512-BA2Yl/I/itzSBKlRvlwin4cs0deq7Qo1qnAjfe7gvqqaFMj9P4aHW4Qy5KzTNzk7s3JSqOWj4bNa+KVdXIYwgw==
+"@distributedlab/tools@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@distributedlab/tools/-/tools-0.2.0.tgz#feb016465ff2034d3d3647ad9c9b725fba409418"
+  integrity sha512-x1vxPLsvE+H99+8QKOO+uChQBzhzp5brURIjqOXAMhpdj4p5RqPvCaRmmWVcjBHSjJRrJvnBJi1DsOxp76mxDA==
   dependencies:
     bignumber.js "^9.1.1"
     dayjs "^1.11.7"

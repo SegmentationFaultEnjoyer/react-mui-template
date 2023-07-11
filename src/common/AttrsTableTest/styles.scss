@@ -1,0 +1,27 @@
+.attrs-table-test {
+    width: 35%;
+}
+
+.attrs-table-test__fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: toRem(12);
+}
+
+.attrs-table-test__fields-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: toRem(10);
+    padding: 0 toRem(10);
+}
+
+.attrs-table-test__attr-table {
+    width: toRem(400);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: toRem(20);
+    margin-top: toRem(20);
+}

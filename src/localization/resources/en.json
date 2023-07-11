@@ -44,6 +44,7 @@
   "main-page": {
     "q-chain": "Q Testnet",
     "mumbai-chain": "Mumbai",
-    "sepolia-chain": "Sepolia"
+    "sepolia-chain": "Sepolia",
+    "save-table-lbl": "Save attributes"
   }
 }

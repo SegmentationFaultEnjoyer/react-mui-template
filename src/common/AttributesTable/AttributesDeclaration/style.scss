@@ -1,0 +1,26 @@
+.attributes-declaration {
+    display: flex;
+    justify-content: center;
+    gap: toRem(8);
+
+    & > * {
+        width: toRem(50);
+        height: toRem(30);
+    }
+
+    &--vertical {
+        flex-direction: column;
+        justify-content: flex-start;
+
+        & > * {
+            height: toRem(44);
+            width: toRem(52);
+        }
+    }
+}
+
+.attributes-declaration__input {
+    @include table-cell-input;
+
+    background-color: var(--white);
+}

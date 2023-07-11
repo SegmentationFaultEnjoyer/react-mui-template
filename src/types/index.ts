@@ -1,3 +1,4 @@
+export * from './attributes.types'
 export * from './common.types'
 export * from './contracts'
 export * from './ethereum.types'
