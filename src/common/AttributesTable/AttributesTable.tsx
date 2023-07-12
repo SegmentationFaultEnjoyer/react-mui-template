@@ -58,28 +58,32 @@ const AttributesTable: FC<Props> = ({
 
   return (
     <div className='attributes-table'>
-      <AttributesDeclaration
-        disabled={declarationDisabled}
-        declaration={attributes.declaration[0]}
-        withOffset={attributes.declaration.length > 1}
-        setDeclaration={setDeclaration}
-      />
-      <section className='attributes-table__main-wrapper'>
-        {Boolean(attributes.declaration.length > 1) && (
+      {Boolean(attributes.declaration.length) && (
+        <>
           <AttributesDeclaration
             disabled={declarationDisabled}
-            declaration={attributes.declaration[1]}
-            mode='vertical'
+            declaration={attributes.declaration[0]}
+            withOffset={attributes.declaration.length > 1}
             setDeclaration={setDeclaration}
           />
-        )}
+          <section className='attributes-table__main-wrapper'>
+            {Boolean(attributes.declaration.length > 1) && (
+              <AttributesDeclaration
+                disabled={declarationDisabled}
+                declaration={attributes.declaration[1]}
+                mode='vertical'
+                setDeclaration={setDeclaration}
+              />
+            )}
 
-        <MainTable
-          table={attributes.values}
-          setTable={setMainTable}
-          disabled={tableDisabled}
-        />
-      </section>
+            <MainTable
+              table={attributes.values}
+              setTable={setMainTable}
+              disabled={tableDisabled}
+            />
+          </section>
+        </>
+      )}
 
       <AnimatePresence>
         {Boolean(errorMessage) && (
