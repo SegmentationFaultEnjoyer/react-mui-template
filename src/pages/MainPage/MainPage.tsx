@@ -5,7 +5,7 @@ import { motion, MotionProps } from 'framer-motion'
 import { FC, HTMLAttributes } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Erc721Test } from '@/common'
+import { StepsFormTest } from '@/common'
 import { ETHEREUM_CHAINS, POLYGON_CHAINS, Q_CHAINS } from '@/enums'
 import { useAppSelector } from '@/store'
 
@@ -59,7 +59,8 @@ const MainPage: FC<Props> = ({ ...rest }) => {
       {provider?.selectedProvider && (
         <p>{`provider: ${provider.selectedProvider}`}</p>
       )}
-      <Erc721Test />
+
+      <StepsFormTest />
     </motion.div>
   )
 }

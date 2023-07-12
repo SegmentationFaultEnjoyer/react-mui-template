@@ -1,0 +1,48 @@
+.steps-form-test {
+    width: 70%;
+    padding: toRem(20);
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+}
+
+.step-actions {
+    display: flex;
+    gap: toRem(20);
+    justify-content: center;
+    margin-top: auto;
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: toRem(25);
+    padding: toRem(40) toRem(120);
+}
+
+.steps-form-test__default {
+    min-height: toRem(440);
+    display: flex;
+    flex-direction: column;
+    border-radius: toRem(8);
+    border: toRem(2) dashed var(--primary-light);
+    padding: toRem(20);
+}
+
+.steps-form-test__teleported {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: toRem(20);
+    flex: 1;
+}
+
+.steps-form-test___teleported-nav {
+    border-radius: toRem(8);
+    background-color: rgba(var(--primary-light-rgb), 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: toRem(20);
+}

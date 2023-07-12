@@ -6,7 +6,8 @@
     "field-error_minValue": "This field must contain value at least {{minValue}}",
     "field-error_maxValue": "This field must contain maximum {{maxValue}}",
     "field-error_address": "Field must be valid wallet address ",
-    "field-error_alphaNumWithSpecialChars": "Only Latin characters and special symbols are supported"
+    "field-error_alphaNumWithSpecialChars": "Only Latin characters and special symbols are supported",
+    "field-error_email": "Field must be valid email address "
   },
   "errors": {
     "default": "Oops... Something went wrong",
@@ -45,5 +46,10 @@
     "q-chain": "Q Testnet",
     "mumbai-chain": "Mumbai",
     "sepolia-chain": "Sepolia"
+  },
+  "form-stepper": {
+    "next-step-lbl": "Next step",
+    "prev-step-lbl": "Back",
+    "submit-lbl": "Submit"
   }
 }

@@ -8,6 +8,7 @@ import i18n from '@/localization'
 type ValidatorFunc = (...params: any[]) => Validator
 
 const NameRegex = new RegExp(/^[ A-Za-z0-9_.,-=+!?"'“”/]*$/)
+const EmaiRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)
 
 export const required: Validator = value => ({
   isValid:
@@ -22,6 +23,11 @@ export const required: Validator = value => ({
 export const alphaNumWithSpecialChars: Validator = value => ({
   isValid: NameRegex.test(value),
   message: i18n.t('validations.field-error_alphaNumWithSpecialChars'),
+})
+
+export const email: Validator = value => ({
+  isValid: EmaiRegex.test(value),
+  message: i18n.t('validations.field-error_email'),
 })
 
 export const address: Validator = value => ({

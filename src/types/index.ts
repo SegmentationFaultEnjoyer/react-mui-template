@@ -1,6 +1,7 @@
 export * from './common.types'
 export * from './contracts'
 export * from './ethereum.types'
+export * from './generic.types'
 export * from './provider.types'
 export * from './solana.types'
 export type { Chains, OnBoardApi } from '@/hooks'

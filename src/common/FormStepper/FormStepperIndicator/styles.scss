@@ -1,0 +1,38 @@
+.form-stepper-indicator {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(43);
+}
+
+.form-stepper-indicator__steps {
+    display: flex;
+    gap: toRem(14);
+    align-items: center;
+    position: relative;
+    transition: opacity 0.2s ease-in-out;
+
+    &:not(:first-child) {
+        &:before {
+            content: '';
+            position: absolute;
+            top: toRem(-37);
+            left: toRem(14);
+            width: toRem(2);
+            height: toRem(32);
+            background-color: var(--primary-light);
+        }
+    }
+
+    &--disabled {
+        opacity: 0.3;
+        user-select: none;
+    }
+}
+
+.form-stepper-indicator__icon {
+    --size: #{toRem(30)};
+
+    color: var(--primary-light);
+    min-width: var(--size);
+    min-height: var(--size);
+}

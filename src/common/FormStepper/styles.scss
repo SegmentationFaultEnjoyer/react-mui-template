@@ -1,0 +1,21 @@
+.form-stepper {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    flex: 1;
+
+    & > *:only-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.form-stepper__steps-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-stepper__content {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(20);
+}
