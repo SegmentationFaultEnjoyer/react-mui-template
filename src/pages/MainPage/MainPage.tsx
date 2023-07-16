@@ -33,7 +33,7 @@ const MainPage: FC<Props> = ({ ...rest }) => {
         formData.append(config.MULTER_FILE_IDENTIFIER, file)
       }
 
-      await fetch(`${config.API_URL}/integrations/media`, {
+      await fetch(`${config.API_URL}/blob-svc`, {
         method: 'POST',
         body: formData,
       })
