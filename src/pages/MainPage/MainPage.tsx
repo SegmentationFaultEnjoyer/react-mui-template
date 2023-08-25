@@ -10,7 +10,7 @@ import { config } from '@/config'
 import { ETHEREUM_CHAINS, POLYGON_CHAINS, Q_CHAINS } from '@/enums'
 import { FileField } from '@/fields'
 import { ErrorHandler } from '@/helpers'
-import { useAppSelector } from '@/store'
+import { useProvider } from '@/hooks'
 
 type Props = HTMLAttributes<HTMLDivElement> & MotionProps
 
@@ -19,7 +19,7 @@ type Chain = Q_CHAINS | POLYGON_CHAINS | ETHEREUM_CHAINS
 const MainPage: FC<Props> = ({ ...rest }) => {
   const { t } = useTranslation()
 
-  const provider = useAppSelector(state => state.web3ProvidersSlice.provider)
+  const provider = useProvider()
 
   const [files, setFiles] = useState<File[]>([])
 

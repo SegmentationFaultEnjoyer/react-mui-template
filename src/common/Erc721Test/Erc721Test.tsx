@@ -7,12 +7,11 @@ import { FC, useCallback, useEffect, useState } from 'react'
 import { Icon } from '@/common'
 import { ICON_NAMES } from '@/enums'
 import { Bus, ErrorHandler } from '@/helpers'
-import { useErc721, useForm, useFormValidation } from '@/hooks'
-import { useAppSelector } from '@/store'
+import { useErc721, useForm, useFormValidation, useProvider } from '@/hooks'
 import { address as addressValidator, required } from '@/validators'
 
 const Erc721Test: FC = () => {
-  const provider = useAppSelector(state => state.web3ProvidersSlice.provider)
+  const provider = useProvider()
 
   const erc721 = useErc721(provider)
 
