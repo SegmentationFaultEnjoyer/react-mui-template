@@ -1,4 +1,7 @@
+import injectedWalletsModule from '@web3-onboard/injected-wallets'
 import { init, Web3OnboardProvider } from '@web3-onboard/react'
+import torusModule from '@web3-onboard/torus'
+import trustModule from '@web3-onboard/trust'
 
 import { CHAINS as DEFAULT_CHAINS } from '@/consts'
 import { PROVIDERS } from '@/enums'
@@ -11,16 +14,20 @@ type AccountCenterOpts = Parameters<typeof init>[0]['accountCenter']
 type ConnectOpts = Parameters<typeof init>[0]['connect']
 type Wallets = Parameters<typeof init>[0]['wallets']
 
-type InitOpts = {
-  chains?: Chains
-  appMetaData?: AppMetaData
-  accountCenter?: AccountCenterOpts
-  connect?: ConnectOpts
-  wallets?: PROVIDERS[]
+type InitOpts = Parameters<typeof init>[0] & {
+  providers?: PROVIDERS[]
 }
 
+const supportedWallets = new Map<PROVIDERS, Wallets[0]>([
+  [PROVIDERS.metamask, injectedWalletsModule()],
+  [PROVIDERS.torus, torusModule()],
+  [PROVIDERS.trust, trustModule()],
+])
+
+const defaultProviders = [PROVIDERS.metamask, PROVIDERS.torus, PROVIDERS.trust]
+
 // Info that will be displayed in account center
-const appMetadata: AppMetaData = {
+const appMetadataPlaceholder: AppMetaData = {
   name: 'Connect Wallet Example',
   icon: '<svg>My App Icon</svg>',
   description: 'Example showcasing how to connect a wallet.',
@@ -43,55 +50,30 @@ const connectOpts: ConnectOpts = {
   autoConnectLastWallet: true,
 }
 
-const defaultWallets: PROVIDERS[] = [
-  PROVIDERS.metamask,
-  PROVIDERS.coinbase,
-  PROVIDERS.walletConnect,
-]
-
 export function useWallet() {
-  /* More wallets can be added if needed 
-     Check all supported providers here: 
-     https://onboard.blocknative.com/docs/wallets/coinbase
-  */
-  const _getWalletProvider = async (wallet: PROVIDERS) => {
-    switch (wallet) {
-      case PROVIDERS.coinbase:
-        return import('@web3-onboard/coinbase')
-      case PROVIDERS.walletConnect:
-        return import('@web3-onboard/walletconnect')
-      case PROVIDERS.ledger:
-        return import('@web3-onboard/ledger')
-      case PROVIDERS.trust:
-        return import('@web3-onboard/trust')
-      case PROVIDERS.phantom:
-        return import('@web3-onboard/phantom')
-      case PROVIDERS.metamask:
-      default:
-        return import('@web3-onboard/injected-wallets')
-    }
-  }
-
   const _getWalletsList = async (walletNames: PROVIDERS[]) => {
-    const providers = []
-    for (const wallet of walletNames) {
-      const provider = await _getWalletProvider(wallet)
+    const providers = walletNames.map(wallet => {
+      const provider = supportedWallets.get(wallet)
 
-      providers.push((provider.default as unknown as CallableFunction)())
-    }
+      if (!provider) throw new Error(`${wallet} is unsupported`)
 
-    return providers as unknown as Wallets
+      return provider
+    })
+
+    return providers
   }
 
-  const initWallets = async (opts?: InitOpts): Promise<OnBoardApi> => {
+  const initWallets = async (opts?: Partial<InitOpts>): Promise<OnBoardApi> => {
     const walletsList = await _getWalletsList(
-      opts?.wallets ? opts.wallets : defaultWallets,
+      opts?.providers ? opts.providers : defaultProviders,
     )
 
     const web3Onboard = init({
       wallets: walletsList,
       chains: opts?.chains ? opts.chains : DEFAULT_CHAINS,
-      appMetadata: opts?.appMetaData ? opts.appMetaData : appMetadata,
+      appMetadata: opts?.appMetadata
+        ? opts.appMetadata
+        : appMetadataPlaceholder,
       accountCenter: opts?.accountCenter
         ? opts.accountCenter
         : accountCenterOpts,

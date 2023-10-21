@@ -70,6 +70,11 @@ const interfacesToDeclare = [
   'SvgIcon',
   'IconButton',
   'Checkbox',
+  'CircularProgress',
+  'Radio',
+  'Chip',
+  'ButtonGroup',
+  'FormControl',
 ]
 
 function getPaletteDeclaration(paletteOptions) {

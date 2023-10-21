@@ -1,14 +1,20 @@
 import mitt, { Emitter, EventType } from 'mitt'
 
+import { PROVIDER_EVENTS } from '@/enums'
 import { NotificationObjectPayload } from '@/types'
 
-enum EVENTS {
+enum NOTIFICATION_EVENTS {
   error = 'error',
   warning = 'warning',
   success = 'success',
   info = 'info',
   default = 'default',
 }
+
+const EVENTS = {
+  ...NOTIFICATION_EVENTS,
+  ...PROVIDER_EVENTS,
+} as const
 
 export class EventBus {
   private handledEvents: Array<EventType> = []

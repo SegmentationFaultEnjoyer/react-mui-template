@@ -2,15 +2,14 @@ import './styles.scss'
 
 import { Button } from '@mui/material'
 import { motion, MotionProps } from 'framer-motion'
-import { FC, HTMLAttributes, useState } from 'react'
+import { FC, HTMLAttributes, useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Erc721Test } from '@/common'
 import { config } from '@/config'
+import { web3ProviderContext } from '@/contexts'
 import { ETHEREUM_CHAINS, POLYGON_CHAINS, Q_CHAINS } from '@/enums'
 import { FileField } from '@/fields'
 import { ErrorHandler } from '@/helpers'
-import { useProvider } from '@/hooks'
 
 type Props = HTMLAttributes<HTMLDivElement> & MotionProps
 
@@ -19,7 +18,7 @@ type Chain = Q_CHAINS | POLYGON_CHAINS | ETHEREUM_CHAINS
 const MainPage: FC<Props> = ({ ...rest }) => {
   const { t } = useTranslation()
 
-  const provider = useProvider()
+  const { provider } = useContext(web3ProviderContext)
 
   const [files, setFiles] = useState<File[]>([])
 
@@ -83,7 +82,6 @@ const MainPage: FC<Props> = ({ ...rest }) => {
       {provider?.selectedProvider && (
         <p>{`provider: ${provider.selectedProvider}`}</p>
       )}
-      <Erc721Test />
 
       <div className='main-page__fields'>
         <h4>File field</h4>
@@ -101,11 +99,6 @@ const MainPage: FC<Props> = ({ ...rest }) => {
           {'SEND FILE'}
         </Button>
       </div>
-
-      {/* <img
-        src='http://localhost:9000/test-bucket/1c65423f-783d-464e-bafd-858db2282f7a.png'
-        alt='test'
-      /> */}
     </motion.div>
   )
 }

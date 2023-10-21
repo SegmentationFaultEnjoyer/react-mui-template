@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import { AppNavbar } from '@/common'
+import { Web3ProviderContextProvider } from '@/contexts'
 import { RoutesPaths } from '@/enums'
 
 export const AppRoutes = () => {
@@ -33,10 +34,12 @@ export const AppRoutes = () => {
       path: '/',
       element: (
         <Suspense fallback={<></>}>
-          <AppNavbar className='app__navbar' />
-          <AnimatePresence>
-            <Outlet />
-          </AnimatePresence>
+          <Web3ProviderContextProvider>
+            <AppNavbar className='app__navbar' />
+            <AnimatePresence>
+              <Outlet />
+            </AnimatePresence>
+          </Web3ProviderContextProvider>
         </Suspense>
       ),
       children: [
