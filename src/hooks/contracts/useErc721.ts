@@ -1,35 +1,19 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
 import { handleEthError } from '@/helpers'
 import { Erc721__factory, EthProviderRpcError, UseProvider } from '@/types'
 
 export function useErc721(provider?: UseProvider, address?: string) {
-  const [contractAddress, setContractAddress] = useState(address)
+  const contractInstance = useMemo(() => {
+    if (!address || !provider?.currentProvider) return undefined
 
-  const contractInstance = useMemo(
-    () =>
-      (!!provider &&
-        !!provider.currentProvider &&
-        !!contractAddress &&
-        Erc721__factory.connect(contractAddress, provider.currentProvider)) ||
-      undefined,
-    [contractAddress, provider],
-  )
+    return Erc721__factory.connect(address, provider.currentProvider)
+  }, [address, provider])
+
   const contractInterface = Erc721__factory.createInterface()
 
-  const isInitialized = useMemo(
-    () => Boolean(contractInstance) && Boolean(contractAddress),
-    [contractAddress, contractInstance],
-  )
-
-  const init = (address: string) => {
-    if (!address) return
-
-    setContractAddress(address)
-  }
-
   const getOwner = async (tokenId: string) => {
-    if (!contractInstance) return
+    if (!contractInstance) throw new Error('No contract instance')
 
     try {
       return contractInstance.ownerOf(tokenId)
@@ -39,7 +23,7 @@ export function useErc721(provider?: UseProvider, address?: string) {
   }
 
   const tokenURI = async (tokenId: string) => {
-    if (!contractInstance) return
+    if (!contractInstance) throw new Error('No contract instance')
 
     try {
       return contractInstance.tokenURI(tokenId)
@@ -59,7 +43,7 @@ export function useErc721(provider?: UseProvider, address?: string) {
       ])
 
       const receipt = await provider.signAndSendTx({
-        to: contractAddress,
+        to: address,
         data,
       })
 
@@ -70,9 +54,6 @@ export function useErc721(provider?: UseProvider, address?: string) {
   }
 
   return {
-    isInitialized,
-
-    init,
     getOwner,
     tokenURI,
     transfer,

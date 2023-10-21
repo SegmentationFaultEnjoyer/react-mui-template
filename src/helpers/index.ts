@@ -1,3 +1,4 @@
+export * from './chain.helpers'
 export * from './clipboard.helpers'
 export * from './error-handler.helpers'
 export * from './ethereum.helpers'

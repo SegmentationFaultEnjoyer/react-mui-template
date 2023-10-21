@@ -4,12 +4,18 @@ import { useConnectWallet, useSetChain } from '@web3-onboard/react'
 import { ethers } from 'ethers'
 import { isEqual } from 'lodash-es'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffectOnce } from 'react-use'
 
+import { config } from '@/config'
 import {
+  Bus,
   getAppropriateProviderName,
   getEthExplorerAddressUrl,
   getEthExplorerTxUrl,
+  getJsonRpcProvider,
   handleEthError,
+  hexToNumber,
+  numberToHex,
 } from '@/helpers'
 import {
   EthProviderRpcError,
@@ -18,26 +24,11 @@ import {
   TxRequestBody,
 } from '@/types'
 
-export interface UseProvider {
-  currentProvider?: ethers.providers.Web3Provider
+type RawProvider =
+  | ethers.providers.Web3Provider
+  | ethers.providers.JsonRpcProvider
 
-  init: (provider: ethers.providers.Web3Provider) => Promise<void>
-  disconnect: () => void
-  chainId: string
-  selectedAddress: string
-  selectedProvider: string | undefined
-  switchChain: (chainId: string) => Promise<void>
-  signAndSendTx: (txRequestBody: TxRequestBody) => Promise<TransactionResponse>
-  isConnected: boolean
-  isPerformingOperation: boolean
-  connect: () => Promise<void>
-  getHashFromTxResponse: (txResponse: TransactionResponse) => string
-  getTxUrl: (explorerUrl: string, txHash: string) => string
-  getAddressUrl: (explorerUrl: string, address: string) => string
-  signMessage: (message: string) => Promise<string | undefined>
-}
-
-export const useProvider = (): UseProvider => {
+export const useProvider = () => {
   const [{ wallet, connecting }, connectWallet, disconnectWallet] =
     useConnectWallet()
 
@@ -46,9 +37,16 @@ export const useProvider = (): UseProvider => {
   const [chainId, setChainId] = useState<string>('')
   const [selectedAddress, setSelectedAddress] = useState('')
 
-  const [currentProvider, setCurrentProvider] = useState<
-    ethers.providers.Web3Provider | undefined
-  >()
+  const [currentProvider, setCurrentProvider] = useState<RawProvider>()
+  const [fallbackProvider, setFallbackProvider] = useState<RawProvider>()
+
+  const isFallbackProvider = useMemo(
+    () =>
+      fallbackProvider &&
+      currentProvider &&
+      isEqual(fallbackProvider, currentProvider),
+    [fallbackProvider, currentProvider],
+  )
 
   const currentSigner = useMemo(
     () => currentProvider && currentProvider.getSigner(),
@@ -61,8 +59,8 @@ export const useProvider = (): UseProvider => {
   )
 
   const isConnected = useMemo(
-    () => Boolean(chainId && selectedAddress),
-    [chainId, selectedAddress],
+    () => Boolean(chainId && selectedAddress && selectedProvider),
+    [chainId, selectedAddress, selectedProvider],
   )
 
   const isPerformingOperation = useMemo(
@@ -70,7 +68,7 @@ export const useProvider = (): UseProvider => {
     [connecting, settingChain],
   )
 
-  const init = async (provider: ethers.providers.Web3Provider) => {
+  const init = (provider: RawProvider) => {
     setCurrentProvider(oldProvider => {
       return isEqual(oldProvider, provider) ? oldProvider : provider
     })
@@ -96,7 +94,7 @@ export const useProvider = (): UseProvider => {
       if (!isConnected) return
 
       setChain({
-        chainId,
+        chainId: numberToHex(parseInt(chainId)),
       })
     },
     [setChain, isConnected],
@@ -107,11 +105,19 @@ export const useProvider = (): UseProvider => {
       if (!currentSigner) return
 
       try {
+        Bus.emit(Bus.eventList.beforeTxSent, { txBody: txRequestBody })
+
         const transactionResponse = await currentSigner.sendTransaction(
           txRequestBody as Deferrable<TransactionRequest>,
         )
 
-        return transactionResponse.wait()
+        Bus.emit(Bus.eventList.txSent, { txHash: transactionResponse.hash })
+
+        const receipt = await transactionResponse.wait()
+
+        Bus.emit(Bus.eventList.txConfirmed, { txReceipt: receipt })
+
+        return receipt
       } catch (error) {
         handleEthError(error as EthProviderRpcError)
       }
@@ -148,30 +154,51 @@ export const useProvider = (): UseProvider => {
   }
 
   useEffect(() => {
-    if (!wallet?.provider) return
+    const initProvider = async () => {
+      let ethersProvider: RawProvider | undefined
 
-    const ethersProvider = new ethers.providers.Web3Provider(
-      wallet.provider,
-      'any',
-    )
+      if (
+        !wallet?.provider ||
+        hexToNumber(chainId) !== parseInt(config.CHAIN_ID)
+      ) {
+        ethersProvider = fallbackProvider
+      } else {
+        ethersProvider = new ethers.providers.Web3Provider(
+          wallet.provider,
+          'any',
+        )
+      }
 
-    init(ethersProvider)
-  }, [wallet?.provider])
+      if (!ethersProvider) return
+
+      init(ethersProvider)
+    }
+
+    initProvider()
+  }, [wallet?.provider, chainId, fallbackProvider])
 
   useEffect(() => {
-    if (!wallet?.accounts[0]) return
-
-    setSelectedAddress(wallet.accounts[0].address)
+    setSelectedAddress(wallet?.accounts[0] ? wallet?.accounts[0].address : '')
   }, [wallet?.accounts])
 
   useEffect(() => {
-    if (!connectedChain?.id) return
-
-    setChainId(connectedChain.id)
+    setChainId(connectedChain?.id ?? '')
   }, [connectedChain])
+
+  useEffectOnce(() => {
+    const initFallback = async () => {
+      const provider = await getJsonRpcProvider(config.CHAIN_ID)
+
+      setFallbackProvider(provider)
+    }
+
+    initFallback()
+  })
 
   return {
     currentProvider,
+
+    isFallbackProvider,
 
     chainId,
     selectedAddress,

@@ -1,7 +1,6 @@
 export { default as AppLogo } from './AppLogo'
 export { default as AppNavbar } from './AppNavbar'
 export { default as Collapse } from './Collapse'
-export { default as Erc721Test } from './Erc721Test'
 export { default as ErrorMessage } from './ErrorMessage'
 export { default as Icon } from './Icon'
 export { default as Loader } from './Loader'

@@ -7,6 +7,7 @@ import {
 import { ethers } from 'ethers'
 
 import { PROVIDERS } from '@/enums'
+import { useProvider } from '@/hooks'
 import { EthereumProvider, PhantomProvider } from '@/types'
 
 /**
@@ -45,4 +46,4 @@ export type TransactionResponse =
   | SolanaTransactionResponse
   | unknown
 
-export type { UseProvider } from '@/hooks/useProvider'
+export type UseProvider = ReturnType<typeof useProvider>

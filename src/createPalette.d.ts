@@ -250,4 +250,139 @@ declare module '@mui/material' {
     'border-primary-main': true
     'border-primary-dark': true
   }
+
+  interface CircularProgressPropsColorOverrides {
+    'primary-light': true
+    'primary-main': true
+    'primary-dark': true
+    'secondary-light': true
+    'secondary-main': true
+    'secondary-dark': true
+    'tertiary-light': true
+    'tertiary-main': true
+    'tertiary-dark': true
+    'text-primary-light': true
+    'text-primary-main': true
+    'text-primary-dark': true
+    'text-secondary-light': true
+    'text-secondary-main': true
+    'text-secondary-dark': true
+    'text-primary-invert-light': true
+    'text-primary-invert-main': true
+    'text-primary-invert-dark': true
+    'text-secondary-invert-light': true
+    'text-secondary-invert-main': true
+    'text-secondary-invert-dark': true
+    'border-primary-light': true
+    'border-primary-main': true
+    'border-primary-dark': true
+  }
+
+  interface RadioPropsColorOverrides {
+    'primary-light': true
+    'primary-main': true
+    'primary-dark': true
+    'secondary-light': true
+    'secondary-main': true
+    'secondary-dark': true
+    'tertiary-light': true
+    'tertiary-main': true
+    'tertiary-dark': true
+    'text-primary-light': true
+    'text-primary-main': true
+    'text-primary-dark': true
+    'text-secondary-light': true
+    'text-secondary-main': true
+    'text-secondary-dark': true
+    'text-primary-invert-light': true
+    'text-primary-invert-main': true
+    'text-primary-invert-dark': true
+    'text-secondary-invert-light': true
+    'text-secondary-invert-main': true
+    'text-secondary-invert-dark': true
+    'border-primary-light': true
+    'border-primary-main': true
+    'border-primary-dark': true
+  }
+
+  interface ChipPropsColorOverrides {
+    'primary-light': true
+    'primary-main': true
+    'primary-dark': true
+    'secondary-light': true
+    'secondary-main': true
+    'secondary-dark': true
+    'tertiary-light': true
+    'tertiary-main': true
+    'tertiary-dark': true
+    'text-primary-light': true
+    'text-primary-main': true
+    'text-primary-dark': true
+    'text-secondary-light': true
+    'text-secondary-main': true
+    'text-secondary-dark': true
+    'text-primary-invert-light': true
+    'text-primary-invert-main': true
+    'text-primary-invert-dark': true
+    'text-secondary-invert-light': true
+    'text-secondary-invert-main': true
+    'text-secondary-invert-dark': true
+    'border-primary-light': true
+    'border-primary-main': true
+    'border-primary-dark': true
+  }
+
+  interface ButtonGroupPropsColorOverrides {
+    'primary-light': true
+    'primary-main': true
+    'primary-dark': true
+    'secondary-light': true
+    'secondary-main': true
+    'secondary-dark': true
+    'tertiary-light': true
+    'tertiary-main': true
+    'tertiary-dark': true
+    'text-primary-light': true
+    'text-primary-main': true
+    'text-primary-dark': true
+    'text-secondary-light': true
+    'text-secondary-main': true
+    'text-secondary-dark': true
+    'text-primary-invert-light': true
+    'text-primary-invert-main': true
+    'text-primary-invert-dark': true
+    'text-secondary-invert-light': true
+    'text-secondary-invert-main': true
+    'text-secondary-invert-dark': true
+    'border-primary-light': true
+    'border-primary-main': true
+    'border-primary-dark': true
+  }
+
+  interface FormControlPropsColorOverrides {
+    'primary-light': true
+    'primary-main': true
+    'primary-dark': true
+    'secondary-light': true
+    'secondary-main': true
+    'secondary-dark': true
+    'tertiary-light': true
+    'tertiary-main': true
+    'tertiary-dark': true
+    'text-primary-light': true
+    'text-primary-main': true
+    'text-primary-dark': true
+    'text-secondary-light': true
+    'text-secondary-main': true
+    'text-secondary-dark': true
+    'text-primary-invert-light': true
+    'text-primary-invert-main': true
+    'text-primary-invert-dark': true
+    'text-secondary-invert-light': true
+    'text-secondary-invert-main': true
+    'text-secondary-invert-dark': true
+    'border-primary-light': true
+    'border-primary-main': true
+    'border-primary-dark': true
+  }
 }

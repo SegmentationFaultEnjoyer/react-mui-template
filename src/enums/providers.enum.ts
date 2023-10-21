@@ -8,6 +8,7 @@ export enum PROVIDERS {
   ledger = 'ledger',
   phantom = 'phantom',
   solflare = 'solflare',
+  torus = 'torus',
 }
 
 export enum PROVIDERS_CHECKS {
@@ -20,4 +21,10 @@ export enum PROVIDERS_CHECKS {
   ledger = 'isLedger',
   phantom = 'isPhantom',
   solflare = 'isSolflare',
+}
+
+export enum PROVIDER_EVENTS {
+  beforeTxSent = 'beforeTxSent',
+  txSent = 'txSent',
+  txConfirmed = 'txConfirmed',
 }
